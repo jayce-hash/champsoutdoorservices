@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Champs Outdoor Services LLC - Premier landscaping, snow removal, and yard cleanup in Laramie, WY. Fast, affordable, and personable service since 2015.">
+    <meta name="keywords" content="Landscaping Laramie WY, Snow Removal, Yard Cleanup, Tree Cutting, Lawn Care, Champs Landscaping">
+    <title>Champs Outdoor Services LLC | Laramie, Wyoming</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables - Repeatable Brand Assets */
+        :root {
+            --champs-green: #2a7a40; /* Matched to the shoe/lawn vibe */
+            --champs-black: #111111;
+            --champs-white: #fafafa;
+            --champs-gray: #e0e0e0;
+            --champs-red: #e63946; /* Zip-tie accent color */
+            
+            --font-headings: 'Oswald', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--champs-white);
+            color: var(--champs-black);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-headings);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-family: var(--font-headings);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border: 2px solid var(--champs-black);
+            background-color: var(--champs-black);
+            color: var(--champs-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--champs-white);
+            color: var(--champs-black);
+        }
+
+        .btn-accent {
+            background-color: var(--champs-red);
+            border-color: var(--champs-red);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--champs-white);
+            color: var(--champs-red);
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--champs-white);
+            border-bottom: 3px solid var(--champs-black);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-headings);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--champs-green);
+        }
+
+        .nav-links {
+            display: none; /* Mobile first, hidden on small screens */
+            gap: 2rem;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--champs-green);
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            font-family: var(--font-headings);
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            background-color: var(--champs-green);
+            color: var(--champs-white);
+            padding: 6rem 5%;
+            text-align: center;
+            border-bottom: 5px solid var(--champs-black);
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        #hero h1 span {
+            display: block;
+            font-size: 1.5rem;
+            font-family: var(--font-body);
+            font-weight: 400;
+            text-transform: none;
+            margin-top: 1rem;
+            letter-spacing: normal;
+        }
+
+        .hero-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        #about .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background-color: var(--champs-green);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            border: 2px solid var(--champs-black);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 2rem;
+            color: var(--champs-green);
+        }
+
+        /* Services Section */
+        #services {
+            background-color: var(--champs-gray);
+            border-top: 3px solid var(--champs-black);
+            border-bottom: 3px solid var(--champs-black);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--champs-white);
+            border: 2px solid var(--champs-black);
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 0px var(--champs-green);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--champs-green);
+        }
+
+        .service-card::before {
+            content: '"SERVICE"';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-family: var(--font-headings);
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .review-card {
+            border-left: 5px solid var(--champs-green);
+            padding: 1.5rem;
+            background-color: #f0f0f0;
+        }
+
+        .stars {
+            color: #ffb703;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            font-family: var(--font-headings);
+            text-transform: uppercase;
+        }
+
+        /* Contact & Footer */
+        #contact {
+            background-color: var(--champs-black);
+            color: var(--champs-white);
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-info span {
+            color: var(--champs-green);
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: #000;
+            color: #666;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Desktop Optimization (Media Queries) */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            #hero h1 {
+                font-size: 5rem;
+            }
+
+            #about .container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                "CHAMPS" <span>OUTDOOR</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn">MENU</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>"CHAMPS" <br> LANDSCAPING
+                <span>Laramie, Wyoming USA<br>est. 2015</span>
+            </h1>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-accent">Get an Estimate</a>
+                <a href="#services" class="btn">Our Services</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-text">
+                    <h2>Salt of the Earth, Good People.</h2>
+                    <p>Established in 2015, Champs Outdoor Services LLC is the most affordable and convenient landscaping and tree removal company in Laramie, Wyoming. We pride ourselves on being a personable business that delivers hard work and real results.</p>
+                    <p>Whether it's a massive yard cleanup, routine lawn care, or digging out after a Wyoming snowstorm, we do it all with diligence and care.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <h3>2015</h3>
+                        <p>Established</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>5.0</h3>
+                        <p>Star Rating</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>100%</h3>
+                        <p>Local</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>24/7</h3>
+                        <p>Effort</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What We Do</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Landscaping</h3>
+                        <p>Complete commercial and residential landscaping services to make your property look brand new.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Snow Removal</h3>
+                        <p>Fast, reliable snow clearing to keep your driveways and walkways safe during brutal Wyoming winters.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Tree Cutting</h3>
+                        <p>Professional tree removal and trimming services to keep your property safe and pristine.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Yard Cleanup</h3>
+                        <p>Overgrown backyard? We specialize in major property cleanouts, bringing neglect back to manageable in 48 hours or less.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Power Raking</h3>
+                        <p>Revitalize your lawn by removing thatch buildup, allowing your grass to breathe and grow beautifully.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Weed Control</h3>
+                        <p>Effective weed management to ensure your property stays clean and weeds don't come back.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews">
+            <div class="container">
+                <div class="section-header">
+                    <h2>"The Service is Champs"</h2>
+                </div>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"I’ve yet to use a company that better lives up to its name! The people are Champs, the service is Champs, and the price is Champs! My yard looks better than it ever has. Salt of the earth, good people. 5/5."</p>
+                        <p class="review-author">- Nathan Burman</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"I called this morning, an hour later they arrived to provide an estimate, and were able to provide same day service at an amazing price! Highly recommend their services."</p>
+                        <p class="review-author">- Shelli Curtis</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Carlos was quick on short notice and did diligent work. My backyard was overgrown and neglected... within 48 hours of calling my backyard was back to looking manageable and clean."</p>
+                        <p class="review-author">- Ian Fletcher</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Did a clean up at my house here in Laramie and they made the place like new!"</p>
+                        <p class="review-author">- Bryan Mattinson</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"They do an amazing job! Very hardworking and care about what they do. My yard has never looked better!"</p>
+                        <p class="review-author">- Tori Feldman</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Property was cleaned out and weeds have not come up since."</p>
+                        <p class="review-author">- McCade Johnson</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Book Your "MOW" Today</h2>
+                </div>
+                <div class="contact-info">
+                    <p>Call or Text: <span><a href="tel:+13074601163">(307) 460-1163</a></span></p>
+                    <p>Email: <span><a href="mailto:mccade.johnson22@gmail.com">mccade.johnson22@gmail.com</a></span></p>
+                    <p>Location: <span>Laramie, WY</span></p>
+                </div>
+                <a href="tel:+13074601163" class="btn btn-accent" style="margin-top: 1rem;">Call Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Champs Outdoor Services LLC. Laramie, Wyoming. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'var(--champs-white)';
+                navLinks.style.borderBottom = '3px solid var(--champs-black)';
+                navLinks.style.padding = '1rem';
+                navLinks.style.gap = '1rem';
+            }
+        });
+
+        // Ensure menu resets on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.position = 'static';
+                navLinks.style.padding = '0';
+                navLinks.style.borderBottom = 'none';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

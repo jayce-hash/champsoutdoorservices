@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Champs Outdoor Services LLC - Premier landscaping, snow removal, and yard cleanup in Laramie, WY. Est. 2015.">
     <title>"CHAMPS" | Landscaping & Snow Removal | Laramie, WY</title>
 
@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS Variables - Repeatable Brand Assets */
+        /* CSS Variables */
         :root {
             --champs-green: #2a7a40; 
             --champs-black: #111111;
@@ -35,15 +35,17 @@
             --font-body: 'Inter', sans-serif;
         }
 
-        /* Reset & Base Styles */
+        /* Strict Reset */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
+        html, body {
             scroll-behavior: smooth;
+            overflow-x: hidden; /* ABSOLUTELY NO horizontal scrolling */
+            width: 100%;
         }
 
         body {
@@ -51,12 +53,6 @@
             background-color: var(--champs-white);
             color: var(--champs-black);
             line-height: 1.6;
-            overflow-x: hidden; 
-        }
-
-        *:focus-visible {
-            outline: 3px solid var(--champs-red);
-            outline-offset: 2px;
         }
 
         h1, h2, h3, h4 {
@@ -65,18 +61,9 @@
             line-height: 1.1;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Brutalist Container structure */
         .wrapper {
             max-width: 1600px;
             margin: 0 auto;
@@ -102,25 +89,14 @@
             transition: all 0.2s ease;
             cursor: pointer;
             text-align: center;
+            width: fit-content;
         }
 
-        .btn:hover, .btn:focus {
-            background-color: var(--champs-black);
-            color: var(--champs-white);
-        }
+        .btn:hover { background-color: var(--champs-black); color: var(--champs-white); }
+        .btn-accent { background-color: var(--champs-red); color: var(--champs-white); border-color: var(--champs-red); }
+        .btn-accent:hover { background-color: var(--champs-black); border-color: var(--champs-black); }
 
-        .btn-accent {
-            background-color: var(--champs-red);
-            color: var(--champs-white);
-            border-color: var(--champs-red);
-        }
-
-        .btn-accent:hover, .btn-accent:focus {
-            background-color: var(--champs-black);
-            border-color: var(--champs-black);
-        }
-
-        /* Floating Action Button (FAB) */
+        /* FAB */
         .fab {
             position: fixed;
             bottom: 20px;
@@ -135,16 +111,9 @@
             border: 2px solid var(--champs-black);
             box-shadow: 4px 4px 0px var(--champs-black);
             z-index: 1000;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .fab:hover, .fab:focus {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px var(--champs-black);
-            color: var(--champs-white);
-        }
-
-        /* Navigation */
+        /* Header & Nav */
         header {
             background-color: var(--champs-white);
             border-bottom: 2px solid var(--champs-black);
@@ -157,34 +126,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo-block {
-            display: flex;
-            flex-direction: column;
+            padding: 1rem 1.5rem;
         }
 
         .logo {
             font-family: var(--font-headings);
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: -0.5px;
         }
-
-        .logo span {
-            color: var(--champs-green);
-        }
-
+        .logo span { color: var(--champs-green); }
         .logo-sub {
             font-family: var(--font-body);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
         }
 
+        /* Desktop Nav */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -192,66 +151,69 @@
             font-size: 1.1rem;
             text-transform: uppercase;
         }
-
-        .nav-links a:hover, .nav-links a:focus {
-            color: var(--champs-green);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 2px;
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--champs-black);
         }
 
-        /* Hero Section */
+        /* Sections General */
+        section {
+            padding: 4rem 1.5rem;
+            border-bottom: 2px solid var(--champs-black);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: 2rem;
+        }
+
+        /* Hero */
         #hero {
-            position: relative;
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 4rem 2rem;
             background-color: var(--champs-black);
-            border-bottom: 2px solid var(--champs-black);
             background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.8)), url('https://images.unsplash.com/photo-1592424001807-f8319fbf1a15?auto=format&fit=crop&q=80&w=2000');
             background-size: cover;
             background-position: center;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            color: var(--champs-white);
-            max-width: 1200px;
+            padding: 4rem 1.5rem;
         }
 
         .hero-title {
-            font-size: clamp(3rem, 10vw, 8rem);
+            font-size: clamp(2.5rem, 12vw, 8rem);
             line-height: 1;
             margin-bottom: 1rem;
-            word-wrap: break-word;
+            color: var(--champs-white);
         }
 
         .hollow-text {
             color: transparent;
-            -webkit-text-stroke: 2px var(--champs-white);
+            -webkit-text-stroke: 1px var(--champs-white);
         }
 
         .hero-subtext {
-            font-family: var(--font-body);
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: 1rem;
+            color: var(--champs-white);
             max-width: 500px;
             margin-bottom: 2rem;
-            border-left: 4px solid var(--champs-red);
+            border-left: 3px solid var(--champs-red);
             padding-left: 1rem;
-            font-weight: 500;
         }
 
-        /* SEAMLESS INFINITE MARQUEE */
+        /* Marquee */
         .marquee-wrapper {
             display: flex;
             overflow: hidden;
             background-color: var(--champs-green);
             color: var(--champs-white);
             border-bottom: 2px solid var(--champs-black);
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             white-space: nowrap;
         }
 
@@ -259,12 +221,12 @@
             display: flex;
             flex-shrink: 0;
             align-items: center;
-            animation: scrollMarquee 25s linear infinite;
+            animation: scrollMarquee 20s linear infinite;
         }
 
         .marquee-content span {
             font-family: var(--font-headings);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
             padding-right: 1rem;
         }
@@ -274,44 +236,24 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* About Section */
-        #about {
-            display: grid;
-            grid-template-columns: 1fr;
-            border-bottom: 2px solid var(--champs-black);
-        }
-
-        .about-text {
-            padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 4vw, 4rem);
-        }
-
-        .about-text h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            max-width: 600px;
-            color: #333;
-        }
-
+        /* About */
+        #about { padding: 0; display: flex; flex-direction: column; }
+        .about-text { padding: 3rem 1.5rem; }
+        .about-text h2 { font-size: clamp(2rem, 8vw, 4rem); margin-bottom: 1rem; }
+        .about-text p { font-size: 1rem; margin-bottom: 1.5rem; color: #333; }
         .about-photo {
             background-color: var(--champs-gray);
-            min-height: 400px;
+            height: 300px;
             position: relative;
             background-size: cover;
             background-position: center;
             border-top: 2px solid var(--champs-black);
-            /* Placeholder to plug in the photo of the two founders */
-            background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=1000'); 
+            background-image: url('IMG_5915.jpeg'); 
         }
 
         .photo-label {
             position: absolute;
-            bottom: 0; 
-            right: 0;
+            bottom: 0; right: 0;
             background: var(--champs-white);
             padding: 0.5rem 1rem;
             font-family: var(--font-headings);
@@ -321,349 +263,252 @@
         }
 
         /* Services Grid */
-        #services {
-            background-color: var(--champs-white);
-            padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 4vw, 4rem);
-            border-bottom: 2px solid var(--champs-black);
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin-bottom: 3rem;
-        }
-
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .service-card {
             border: 2px solid var(--champs-black);
-            padding: 2rem;
+            padding: 1.5rem;
             background-color: var(--champs-white);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 8px 8px 0px var(--champs-green);
         }
 
         .service-num {
             font-family: var(--font-headings);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--champs-green);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             display: block;
         }
 
-        .service-card h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
 
-        /* Proof of Work Grid */
-        #proof {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            border-bottom: 2px solid var(--champs-black);
-        }
-
+        /* Proof Grid */
+        #proof { padding: 0; display: grid; grid-template-columns: 1fr; }
         .proof-item {
             aspect-ratio: 1 / 1;
-            background-color: var(--champs-gray);
-            border-right: 2px solid var(--champs-black);
+            border-bottom: 2px solid var(--champs-black);
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
         }
 
-        .proof-item:last-child {
-            border-right: none;
-        }
-
-        .proof-quote {
-            background-color: var(--champs-green);
-            color: var(--champs-white);
-        }
-
-        .proof-quote h3 {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            line-height: 1.3;
-        }
-
-        /* REVIEWS SECTION */
-        #reviews {
-            background-color: var(--champs-gray);
-            padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 4vw, 4rem);
-            border-bottom: 2px solid var(--champs-black);
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
+        /* Reviews */
+        #reviews { background-color: var(--champs-gray); }
+        .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
         .review-card {
             background-color: var(--champs-white);
             border: 2px solid var(--champs-black);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            padding: 1.5rem;
         }
-
-        .stars {
-            color: var(--champs-green);
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .review-text {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-            color: #333;
-        }
-
+        .stars { color: var(--champs-green); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .review-text { font-size: 0.95rem; margin-bottom: 1rem; font-style: italic; }
         .review-author {
             font-family: var(--font-headings);
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
             font-weight: 700;
             border-top: 2px solid var(--champs-black);
-            padding-top: 1rem;
+            padding-top: 0.5rem;
         }
 
-        /* Contact/Footer */
+        /* Footer */
         #contact {
             background-color: var(--champs-black);
             color: var(--champs-white);
-            padding: clamp(3rem, 6vw, 6rem) 2rem;
+            padding: 4rem 1.5rem;
             text-align: center;
         }
+        .contact-h2 { font-size: clamp(2.5rem, 10vw, 5rem); margin-bottom: 1rem; }
+        .contact-h2 span { color: var(--champs-green); }
+        .contact-details { font-size: 1.2rem; font-family: var(--font-headings); margin: 2rem 0; }
+        .contact-details a { display: block; margin: 0.5rem 0; }
 
-        .contact-h2 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            margin-bottom: 1rem;
-        }
-
-        .contact-h2 span {
-            color: var(--champs-green);
-        }
-
-        .contact-details {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            font-family: var(--font-headings);
-            margin: 2rem 0;
-        }
-
-        .contact-details a {
-            display: block;
-            margin: 0.5rem 0;
-            transition: color 0.2s ease;
-        }
-
-        .contact-details a:hover, .contact-details a:focus {
-            color: var(--champs-green);
-        }
-
-        .footer-legal {
-            font-family: var(--font-body);
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 4rem;
-            text-transform: uppercase;
-        }
-
-        /* Desktop Optimization */
-        @media (min-width: 900px) {
-            #about {
-                grid-template-columns: 1fr 1fr;
-            }
-            .about-photo {
-                border-top: none;
-                border-left: 2px solid var(--champs-black);
-            }
-            .proof-item:nth-last-child(2) {
-                border-right: 2px solid var(--champs-black);
-            }
-        }
-
+        /* --- MOBILE OVERRIDES --- */
         @media (max-width: 768px) {
+            .wrapper { border-left: none; border-right: none; }
+            
+            /* Mobile Nav Logic */
+            .hamburger { display: block; }
             .nav-links {
+                display: none; /* Hidden by default on mobile */
+                flex-direction: column;
                 width: 100%;
-                justify-content: space-between;
-                font-size: 1rem;
-                padding-top: 1rem;
-                border-top: 1px solid #ccc;
-            }
-            .fab {
-                bottom: 15px; right: 15px; font-size: 1rem; padding: 0.8rem 1.2rem;
-            }
-            .proof-item {
-                border-right: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--champs-white);
                 border-bottom: 2px solid var(--champs-black);
+                padding: 1rem 1.5rem;
+                gap: 1.5rem;
             }
-            .proof-item:last-child {
-                border-bottom: none;
-            }
+            .nav-links.active { display: flex; }
+            
+            .fab { bottom: 15px; right: 15px; font-size: 0.9rem; padding: 0.8rem 1rem; }
+            .hollow-text { -webkit-text-stroke: 1px var(--champs-white); }
+        }
+
+        /* --- DESKTOP OVERRIDES --- */
+        @media (min-width: 769px) {
+            section { padding: 6rem 4rem; }
+            .hero-subtext { font-size: 1.25rem; }
+            #about { flex-direction: row; }
+            .about-text { width: 50%; padding: 6rem 4rem; }
+            .about-photo { width: 50%; height: auto; border-top: none; border-left: 2px solid var(--champs-black); }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            #proof { grid-template-columns: repeat(3, 1fr); border-bottom: 2px solid var(--champs-black); }
+            .proof-item { border-right: 2px solid var(--champs-black); border-bottom: none; }
+            .proof-item:last-child { border-right: none; }
+            .reviews-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
 <body>
 
-    <a href="#contact" class="fab" aria-label="Book a service">Book a "MOW"</a>
+    <a href="#contact" class="fab">Book a "MOW"</a>
 
     <div class="wrapper">
         <header>
             <div class="nav-container">
-                <a href="#" class="logo-block" aria-label="Home">
+                <a href="#" class="logo-block">
                     <div class="logo">"CHAMPS" <span>OUTDOOR</span></div>
-                    <div class="logo-sub">Laramie, Wyoming USA // Est. 2015</div>
+                    <div class="logo-sub">Laramie, Wyoming // Est. 2015</div>
                 </a>
-                <nav class="nav-links" aria-label="Main Navigation">
-                    <a href="#about">About</a>
-                    <a href="#services">Services</a>
-                    <a href="#proof">Proof</a>
-                    <a href="#reviews">Reviews</a>
-                    <a href="#contact">Contact</a>
+                
+                <button class="hamburger" id="menuBtn">☰</button>
+
+                <nav class="nav-links" id="navLinks">
+                    <a href="#about" class="nav-item">About</a>
+                    <a href="#services" class="nav-item">Services</a>
+                    <a href="#proof" class="nav-item">Proof</a>
+                    <a href="#reviews" class="nav-item">Reviews</a>
+                    <a href="#contact" class="nav-item">Contact</a>
                 </nav>
             </div>
         </header>
 
         <main>
-            <section id="hero" aria-label="Welcome to Champs Landscaping">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        "CHAMPS" <br>
-                        <span class="hollow-text">LANDSCAPING</span>
-                    </h1>
-                    <div class="hero-subtext">
-                        The Most Affordable and Convenient Landscaping & Tree Removal Company in Laramie, Wyoming.
-                    </div>
-                    <a href="#contact" class="btn btn-accent">Get an Estimate</a>
+            <section id="hero">
+                <div class="hero-title">
+                    "CHAMPS" <br>
+                    <span class="hollow-text">LANDSCAPING</span>
                 </div>
+                <div class="hero-subtext">
+                    The Most Affordable and Convenient Landscaping & Tree Removal Company in Laramie, Wyoming.
+                </div>
+                <a href="#contact" class="btn btn-accent">Get an Estimate</a>
             </section>
 
-            <div class="marquee-wrapper" aria-hidden="true">
+            <div class="marquee-wrapper">
                 <div class="marquee-content">
-                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
-                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
                     <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
                     <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
                 </div>
                 <div class="marquee-content">
-                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
-                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
                     <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
                     <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
                 </div>
             </div>
 
-            <section id="about" aria-label="About Us">
+            <section id="about">
                 <div class="about-text">
                     <h2>Salt of the Earth.<br>Good People.</h2>
                     <p>We've built our reputation on hard work and real results. Whether it's a massive property cleanout, standard lawn maintenance, or digging out after a Wyoming blizzard, we do it all with diligence and care.</p>
-                    <p>Established in 2015, Champs Outdoor Services LLC prides itself on being a personable business that delivers exactly what we promise. We’ve yet to use a company that better lives up to its name.</p>
-                    <a href="#services" class="btn" style="margin-top: 1.5rem;">View Services</a>
+                    <p>Established in 2015, Champs Outdoor Services LLC prides itself on being a personable business that delivers exactly what we promise.</p>
+                    <a href="#services" class="btn">View Services</a>
                 </div>
-                <div class="about-photo" role="img" aria-label="Photo of Champs Landscaping founders" style="background-image: url('IMG_5915.jpeg');">
+                <div class="about-photo" style="background-image: url('IMG_5915.jpeg');">
                     <div class="photo-label">"THE CREW"</div>
                 </div>
             </section>
 
-            <section id="services" aria-labelledby="services-title">
-                <h2 id="services-title" class="section-title">What We Do.</h2>
+            <section id="services">
+                <h2 class="section-title">What We Do.</h2>
                 <div class="services-grid">
-                    <article class="service-card">
+                    <div class="service-card">
                         <span class="service-num">01.</span>
                         <h3>Landscaping</h3>
                         <p>Complete commercial and residential landscaping services to make your property look brand new.</p>
-                    </article>
-                    <article class="service-card">
+                    </div>
+                    <div class="service-card">
                         <span class="service-num">02.</span>
                         <h3>Snow Removal</h3>
                         <p>Fast, reliable snow clearing to keep your driveways and walkways safe during brutal Wyoming winters.</p>
-                    </article>
-                    <article class="service-card">
+                    </div>
+                    <div class="service-card">
                         <span class="service-num">03.</span>
                         <h3>Yard Cleanouts</h3>
                         <p>Overgrown backyard? We specialize in major property cleanouts with a 48-hour turnaround.</p>
-                    </article>
-                    <article class="service-card">
+                    </div>
+                    <div class="service-card">
                         <span class="service-num">04.</span>
                         <h3>Power Raking</h3>
                         <p>Revitalize your lawn by removing thatch buildup, allowing your grass to breathe and grow.</p>
-                    </article>
+                    </div>
                 </div>
             </section>
 
-            <section id="proof" aria-label="Our Work Portfolio">
-                <div class="proof-item" role="img" aria-label="Landscaping equipment and truck" style="background-image: url('IMG_5914.jpeg');"></div>
-                <div class="proof-item" role="img" aria-label="Landscaping equipment and truck" style="background-image: url('ChampsShoe.png');"></div>
-                <div class="proof-item" role="img" aria-label="Landscaping equipment and truck" style="background-image: url('IMG_5916.jpeg');"></div>
-                </div>
+            <section id="proof">
+                <div class="proof-item" style="background-image: url('IMG_5914.jpeg');"></div>
+                <div class="proof-item" style="background-image: url('ChampsShoe.png');"></div>
+                <div class="proof-item" style="background-image: url('IMG_5916.jpeg');"></div>
             </section>
 
-            <section id="reviews" aria-labelledby="reviews-title">
-                <h2 id="reviews-title" class="section-title">The Word on the Street.</h2>
+            <section id="reviews">
+                <h2 class="section-title">The Word on the Street.</h2>
                 <div class="reviews-grid">
                     <div class="review-card">
-                        <div>
-                            <div class="stars">★★★★★</div>
-                            <p class="review-text">"I’ve yet to use a company that better lives up to its name! The people are Champs, the service is Champs, and the price is Champs! My yard looks better than it ever has. Salt of the earth, good people. 5/5."</p>
-                        </div>
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"I’ve yet to use a company that better lives up to its name! My yard looks better than it ever has. Salt of the earth, good people. 5/5."</p>
                         <p class="review-author">Nathan Burman</p>
                     </div>
-
                     <div class="review-card">
-                        <div>
-                            <div class="stars">★★★★★</div>
-                            <p class="review-text">"I called this morning, an hour later they arrived to provide an estimate, and were able to provide same day service at an amazing price! Highly recommend their services."</p>
-                        </div>
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"I called this morning, an hour later they arrived to provide an estimate, and were able to provide same day service at an amazing price!"</p>
                         <p class="review-author">Shelli Curtis</p>
                     </div>
-
                     <div class="review-card">
-                        <div>
-                            <div class="stars">★★★★★</div>
-                            <p class="review-text">"Carlos was quick on short notice and did diligent work. My backyard was overgrown and neglected... within 48 hours of calling my backyard was back to looking manageable and clean like when I left."</p>
-                        </div>
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Carlos was quick on short notice and did diligent work. Within 48 hours of calling my backyard was back to looking manageable and clean."</p>
                         <p class="review-author">Ian Fletcher</p>
-                    </div>
-
-                    <div class="review-card">
-                        <div>
-                            <div class="stars">★★★★★</div>
-                            <p class="review-text">"Did a clean up at my house here in Laramie and they made the place like new!"</p>
-                        </div>
-                        <p class="review-author">Bryan Mattinson</p>
                     </div>
                 </div>
             </section>
 
-            <footer id="contact" aria-label="Contact Information">
+            <footer id="contact">
                 <h2 class="contact-h2">BOOK A <span>"MOW"</span></h2>
                 <div class="contact-details">
                     <a href="tel:+13074601163">(307) 460-1163</a>
                     <a href="mailto:mccade.johnson22@gmail.com">mccade.johnson22@gmail.com</a>
-                    <p style="color: var(--champs-gray); font-size: 1.2rem; margin-top: 1rem;">Laramie, Wyoming USA</p>
                 </div>
-                <div class="footer-legal">
-                    &copy; 2026 CHAMPS OUTDOOR SERVICES LLC // ALL RIGHTS RESERVED.
-                </div>
+                <p style="color: #888; font-size: 0.8rem; margin-top: 3rem;">&copy; 2026 CHAMPS OUTDOOR SERVICES LLC</p>
             </footer>
         </main>
     </div>
 
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        // Toggle menu open/close
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if(navLinks.classList.contains('active')){
+                menuBtn.textContent = '✕'; // Change to close icon
+            } else {
+                menuBtn.textContent = '☰'; // Change back to hamburger
+            }
+        });
+
+        // Close menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.textContent = '☰';
+            });
+        });
+    </script>
 </body>
 </html>

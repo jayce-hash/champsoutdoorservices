@@ -17,13 +17,13 @@
             --champs-black: #111111;
             --champs-white: #f4f4f0;
             --champs-gray: #e5e5e5;
-            --champs-red: #ff3b00; /* High-vis zip-tie red/orange */
+            --champs-red: #ff3b00;
             
             --font-headings: 'Oswald', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
 
-        /* Reset & Base Styles for Accessibility and Stability */
+        /* Reset & Base Styles */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -39,10 +39,9 @@
             background-color: var(--champs-white);
             color: var(--champs-black);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevents horizontal scrolling bugs */
+            overflow-x: hidden; 
         }
 
-        /* Focus States for Accessibility */
         *:focus-visible {
             outline: 3px solid var(--champs-red);
             outline-offset: 2px;
@@ -199,7 +198,6 @@
             padding: 4rem 2rem;
             background-color: var(--champs-black);
             border-bottom: 2px solid var(--champs-black);
-            /* High quality, stable placeholder image instead of buggy video */
             background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.8)), url('https://images.unsplash.com/photo-1592424001807-f8319fbf1a15?auto=format&fit=crop&q=80&w=2000');
             background-size: cover;
             background-position: center;
@@ -212,7 +210,6 @@
             max-width: 1200px;
         }
 
-        /* Fluid Typography using Clamp - No massive bugs */
         .hero-title {
             font-size: clamp(3rem, 10vw, 8rem);
             line-height: 1;
@@ -235,29 +232,34 @@
             font-weight: 500;
         }
 
-        /* Scrolling Marquee */
+        /* SEAMLESS INFINITE MARQUEE */
         .marquee-wrapper {
+            display: flex;
+            overflow: hidden;
             background-color: var(--champs-green);
             color: var(--champs-white);
-            padding: 1rem 0;
             border-bottom: 2px solid var(--champs-black);
-            overflow: hidden;
+            padding: 1rem 0;
             white-space: nowrap;
-            display: flex;
-            align-items: center;
         }
 
         .marquee-content {
-            display: inline-block;
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            animation: scrollMarquee 25s linear infinite;
+        }
+
+        .marquee-content span {
             font-family: var(--font-headings);
             font-size: 1.5rem;
             text-transform: uppercase;
-            animation: scrollMarquee 20s linear infinite;
+            padding-right: 1rem;
         }
 
         @keyframes scrollMarquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-100%); }
         }
 
         /* About Section */
@@ -291,7 +293,7 @@
             background-position: center;
             border-top: 2px solid var(--champs-black);
             /* Placeholder to plug in the photo of the two founders */
-            background-image: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=1000'); 
+            background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=1000'); 
         }
 
         .photo-label {
@@ -353,12 +355,12 @@
         #proof {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            border-bottom: 2px solid var(--champs-black);
         }
 
         .proof-item {
             aspect-ratio: 1 / 1;
             background-color: var(--champs-gray);
-            border-bottom: 2px solid var(--champs-black);
             border-right: 2px solid var(--champs-black);
             background-size: cover;
             background-position: center;
@@ -367,9 +369,10 @@
             justify-content: center;
             padding: 2rem;
             text-align: center;
+            position: relative;
         }
 
-        .proof-item:last-child, .proof-item:nth-last-child(2) {
+        .proof-item:last-child {
             border-right: none;
         }
 
@@ -381,6 +384,51 @@
         .proof-quote h3 {
             font-size: clamp(1.5rem, 3vw, 2.5rem);
             line-height: 1.3;
+        }
+
+        /* REVIEWS SECTION */
+        #reviews {
+            background-color: var(--champs-gray);
+            padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+            border-bottom: 2px solid var(--champs-black);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background-color: var(--champs-white);
+            border: 2px solid var(--champs-black);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars {
+            color: var(--champs-green);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: #333;
+        }
+
+        .review-author {
+            font-family: var(--font-headings);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-top: 2px solid var(--champs-black);
+            padding-top: 1rem;
         }
 
         /* Contact/Footer */
@@ -433,6 +481,9 @@
                 border-top: none;
                 border-left: 2px solid var(--champs-black);
             }
+            .proof-item:nth-last-child(2) {
+                border-right: 2px solid var(--champs-black);
+            }
         }
 
         @media (max-width: 768px) {
@@ -445,6 +496,13 @@
             }
             .fab {
                 bottom: 15px; right: 15px; font-size: 1rem; padding: 0.8rem 1.2rem;
+            }
+            .proof-item {
+                border-right: none;
+                border-bottom: 2px solid var(--champs-black);
+            }
+            .proof-item:last-child {
+                border-bottom: none;
             }
         }
     </style>
@@ -464,6 +522,7 @@
                     <a href="#about">About</a>
                     <a href="#services">Services</a>
                     <a href="#proof">Proof</a>
+                    <a href="#reviews">Reviews</a>
                     <a href="#contact">Contact</a>
                 </nav>
             </div>
@@ -485,7 +544,16 @@
 
             <div class="marquee-wrapper" aria-hidden="true">
                 <div class="marquee-content">
-                    "CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH // "CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // 
+                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
+                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
+                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
+                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
+                </div>
+                <div class="marquee-content">
+                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
+                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
+                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
+                    <span>"CHAMPS" LANDSCAPING // EST. 2015 // WYOMING WASTE MANAGEMENT // SALT OF THE EARTH //</span>
                 </div>
             </div>
 
@@ -496,7 +564,7 @@
                     <p>Established in 2015, Champs Outdoor Services LLC prides itself on being a personable business that delivers exactly what we promise. We’ve yet to use a company that better lives up to its name.</p>
                     <a href="#services" class="btn" style="margin-top: 1.5rem;">View Services</a>
                 </div>
-                <div class="about-photo" role="img" aria-label="Photo of Champs Landscaping founders" style="background-image: url('IMG_5915.jpeg');">
+                <div class="about-photo" role="img" aria-label="Photo of Champs Landscaping founders" style="background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=1000');">
                     <div class="photo-label">"THE CREW"</div>
                 </div>
             </section>
@@ -528,7 +596,7 @@
             </section>
 
             <section id="proof" aria-label="Our Work Portfolio">
-                <div class="proof-item" role="img" aria-label="Landscaping equipment and truck" style="background-image: url('IMG_5914.jpeg');"></div>
+                <div class="proof-item" role="img" aria-label="Landscaping equipment and truck" style="background-image: url('https://images.unsplash.com/photo-1590502593747-422987997d8c?auto=format&fit=crop&q=80&w=800');"></div>
                 
                 <div class="proof-item proof-quote">
                     <h3>"MY YARD HAS NEVER LOOKED BETTER. 5/5."</h3>
@@ -536,6 +604,51 @@
                 
                 <div class="proof-item" role="img" aria-label="Champs streetwear logo graphic" style="background-image: url('https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=800');">
                     <div class="photo-label">"THE UNIFORM"</div>
+                </div>
+            </section>
+
+            <section id="reviews" aria-labelledby="reviews-title">
+                <h2 id="reviews-title" class="section-title">The Word on the Street.</h2>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="review-text">"I’ve yet to use a company that better lives up to its name! The people are Champs, the service is Champs, and the price is Champs! My yard looks better than it ever has. Salt of the earth, good people. 5/5."</p>
+                        </div>
+                        <p class="review-author">Nathan Burman</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="review-text">"I called this morning, an hour later they arrived to provide an estimate, and were able to provide same day service at an amazing price! Highly recommend their services."</p>
+                        </div>
+                        <p class="review-author">Shelli Curtis</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="review-text">"Carlos was quick on short notice and did diligent work. My backyard was overgrown and neglected... within 48 hours of calling my backyard was back to looking manageable and clean like when I left."</p>
+                        </div>
+                        <p class="review-author">Ian Fletcher</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="review-text">"Did a clean up at my house here in Laramie and they made the place like new!"</p>
+                        </div>
+                        <p class="review-author">Bryan Mattinson</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="review-text">"They do an amazing job! Very hardworking and care about what they do. My yard has never looked better!"</p>
+                        </div>
+                        <p class="review-author">Tori Feldman</p>
+                    </div>
                 </div>
             </section>
 

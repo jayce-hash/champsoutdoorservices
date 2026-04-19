@@ -44,7 +44,7 @@
 
         html, body {
             scroll-behavior: smooth;
-            overflow-x: hidden; /* ABSOLUTELY NO horizontal scrolling */
+            overflow-x: hidden; 
             width: 100%;
         }
 
@@ -172,38 +172,37 @@
             margin-bottom: 2rem;
         }
 
-        /* Hero */
+        /* Hero - Reverted to Light Background & Restored Font */
         #hero {
             min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-color: var(--champs-black);
-            background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.8)), url('https://images.unsplash.com/photo-1592424001807-f8319fbf1a15?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            background-position: center;
+            background-color: var(--champs-white);
             padding: 4rem 1.5rem;
         }
 
         .hero-title {
+            font-family: var(--font-headings);
             font-size: clamp(2.5rem, 12vw, 8rem);
             line-height: 1;
             margin-bottom: 1rem;
-            color: var(--champs-white);
+            color: var(--champs-black);
         }
 
         .hollow-text {
             color: transparent;
-            -webkit-text-stroke: 1px var(--champs-white);
+            -webkit-text-stroke: 2px var(--champs-black);
         }
 
         .hero-subtext {
             font-size: 1rem;
-            color: var(--champs-white);
+            color: var(--champs-black);
             max-width: 500px;
             margin-bottom: 2rem;
-            border-left: 3px solid var(--champs-red);
+            border-left: 3px solid var(--champs-green);
             padding-left: 1rem;
+            font-weight: 500;
         }
 
         /* Marquee */
@@ -332,7 +331,7 @@
             /* Mobile Nav Logic */
             .hamburger { display: block; }
             .nav-links {
-                display: none; /* Hidden by default on mobile */
+                display: none; 
                 flex-direction: column;
                 width: 100%;
                 position: absolute;
@@ -346,7 +345,7 @@
             .nav-links.active { display: flex; }
             
             .fab { bottom: 15px; right: 15px; font-size: 0.9rem; padding: 0.8rem 1rem; }
-            .hollow-text { -webkit-text-stroke: 1px var(--champs-white); }
+            .hollow-text { -webkit-text-stroke: 1.5px var(--champs-black); }
         }
 
         /* --- DESKTOP OVERRIDES --- */
@@ -390,10 +389,10 @@
 
         <main>
             <section id="hero">
-                <div class="hero-title">
+                <h1 class="hero-title">
                     "CHAMPS" <br>
                     <span class="hollow-text">LANDSCAPING</span>
-                </div>
+                </h1>
                 <div class="hero-subtext">
                     The Most Affordable and Convenient Landscaping & Tree Removal Company in Laramie, Wyoming.
                 </div>
@@ -496,9 +495,9 @@
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             if(navLinks.classList.contains('active')){
-                menuBtn.textContent = '✕'; // Change to close icon
+                menuBtn.textContent = '✕'; 
             } else {
-                menuBtn.textContent = '☰'; // Change back to hamburger
+                menuBtn.textContent = '☰'; 
             }
         });
 
